@@ -33,6 +33,8 @@
                             <n-input v-model:value="productItem.price" />
                         </n-form-item>
                         <n-form-item label="上架日期">
+                            <n-date-picker v-model:formatted-value="productItem.date" value-format="yyyy-MM-dd"
+                                type="date" clearable />
                             <n-input v-model:value="productItem.date" />
                         </n-form-item>
                         <n-form-item label="周边主题">
