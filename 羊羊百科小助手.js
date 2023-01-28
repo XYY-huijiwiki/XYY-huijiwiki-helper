@@ -124,9 +124,9 @@ jQuery(document).ready(function ($) {
 
                     $('#J_DivItemDesc img').each((index, ele) => {
                         let a = $(ele).attr('src');
-                        a.slice(0, 1) === '//'
-                            ? a = 'https:' + a
-                            : a = a;
+                        a.slice(0, 4) === 'http'
+                            ? a = a
+                            : a = 'https:' + a;
                         longImg = longImg.concat(a);
                     });
                     console.log(longImg);
