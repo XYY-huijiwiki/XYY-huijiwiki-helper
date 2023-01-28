@@ -13,7 +13,7 @@
 // @grant GM_getResourceText
 // @grant GM_addStyle
 // @resource json https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.json
-// @resource html https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.html
+// @resource html https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.txt
 // @resource css  https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.css
 // @require       https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.js
 // ==/UserScript==
