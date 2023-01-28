@@ -12,8 +12,8 @@
 // @grant GM_download
 // @grant GM_getResourceText
 // @grant GM_addStyle
-// @resource json file://E:\Project\XYY-huiji-wiki-components\src\羊羊百科小助手.json
-// @resource html file://E:\Project\XYY-huiji-wiki-components\src\羊羊百科小助手.html
-// @resource css file://E:\Project\XYY-huiji-wiki-components\src\羊羊百科小助手.css
-// @require      file://E:\Project\XYY-huiji-wiki-components\src\羊羊百科小助手.js
+// @resource json https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.json
+// @resource html https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.html
+// @resource css  https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.css
+// @require       https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.js
 // ==/UserScript==
