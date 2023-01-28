@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
                 const productItem = Vue.ref({
                     pagename: '',
                     price: '',
-                    date: '',
+                    date: null,
                     feat: '',
                     ifImgDownload: false
                 });
@@ -77,10 +77,10 @@ jQuery(document).ready(function ($) {
                 }
 
                 //功能2：获取淘宝商品信息
-                async function getTaobaoItem(pagename, price, date, feat, ifImgDownload) {
+                async function getTaobaoItem() {
 
-                    pagename = pagename || '页面名称';
-                    price = price || $('#J_StrPrice>.tb-rmb-num').text();
+                    productItem.value.pagename = productItem.value.pagename || '页面名称';
+                    productItem.value.price = productItem.value.price || $('#J_StrPrice>.tb-rmb-num').text();
                     let link = `https://item.taobao.com/item.htm?id=${g_config.itemId}`;
                     let img = g_config.idata.item.auctionImages;
 
@@ -95,7 +95,7 @@ jQuery(document).ready(function ($) {
                             defaultFeat = element;
                         }
                     });
-                    feat = feat || defaultFeat;
+                    productItem.value.feat = productItem.value.feat || defaultFeat;
 
                     //收集颜色分类的图片
                     $('#J_isku .J_TSaleProp a').each((index, ele) => {
@@ -111,8 +111,8 @@ jQuery(document).ready(function ($) {
                     //排序和下载图片
                     let imgNameList = [];
                     img.forEach((ele, index) => {
-                        if (ifImgDownload) { GM_download(ele, pagename + (index + 1) + ele.slice(-4)); }
-                        imgNameList = imgNameList.concat(pagename + (index + 1) + ele.slice(-4));
+                        if (productItem.value.ifImgDownload) { GM_download(ele, productItem.value.pagename + (index + 1) + ele.slice(-4)); }
+                        imgNameList = imgNameList.concat(productItem.value.pagename + (index + 1) + ele.slice(-4));
                     });
                     let imgNameStr = imgNameList.join('\n');
 
@@ -129,21 +129,21 @@ jQuery(document).ready(function ($) {
 
                     //排序和下载长图
                     longImg.forEach((ele, index) => {
-                        if (ifImgDownload) { GM_download(ele, pagename + ' 描述图' + (index + 1) + ele.slice(-4)); }
-                        longImgList = longImgList.concat(pagename + ' 描述图' + (index + 1) + ele.slice(-4));
+                        if (productItem.value.ifImgDownload) { GM_download(ele, productItem.value.pagename + ' 描述图' + (index + 1) + ele.slice(-4)); }
+                        longImgList = longImgList.concat(productItem.value.pagename + ' 描述图' + (index + 1) + ele.slice(-4));
                     });
                     longImgStr = longImgList.join('|');
 
                     //等待长图加载完毕后输出结果
-                    resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${price}元\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=${link}\n|链接（天猫）=\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${date}\n|适龄=\n|条码=\n|主题=${feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgStr}}}\n`;
+                    resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${productItem.value.price}\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=${link}\n|链接（天猫）=\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${productItem.value.date||''}\n|适龄=\n|条码=\n|主题=${productItem.value.feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgStr}}}\n`;
 
                 }
 
                 //功能3：获取天猫商品信息
-                async function getTianmaoItem(pagename, price, date, feat, ifImgDownload) {
+                async function getTianmaoItem() {
 
-                    pagename = pagename || '页面名称';
-                    price = price || $('[class^=Price--originPrice] [class^=Price--priceText--2nLbVda]').text();
+                    productItem.value.pagename = productItem.value.pagename || '页面名称';
+                    productItem.value.price = productItem.value.price || $('[class^=Price--originPrice] [class^=Price--priceText--2nLbVda]').text();
 
                     //加载主题信息
                     let series = (JSON.parse(GM_getResourceText('json')))['series'];
@@ -153,7 +153,7 @@ jQuery(document).ready(function ($) {
                             defaultFeat = element;
                         }
                     });
-                    feat = feat || defaultFeat;
+                    productItem.value.feat = productItem.value.feat || defaultFeat;
 
                     //加载品牌信息
                     let brand = (JSON.parse(GM_getResourceText('json')))['Tianmao2Brand'][($('[class^=ShopFloat--title]').text())] || '';
@@ -170,8 +170,8 @@ jQuery(document).ready(function ($) {
                     //生成文件名
                     let longImgNameList = [];
                     longImgList.forEach((element, index) => {
-                        longImgNameList[index] = pagename + " 描述图" + (index + 1) + element.slice(-4);
-                        if (ifImgDownload) { GM_download(element, longImgNameList[index]); }
+                        longImgNameList[index] = productItem.value.pagename + " 描述图" + (index + 1) + element.slice(-4);
+                        if (productItem.value.ifImgDownload) { GM_download(element, longImgNameList[index]); }
                     });
                     let longImgNameStr = longImgNameList.join('|');
 
@@ -193,13 +193,13 @@ jQuery(document).ready(function ($) {
                     //生成文件名
                     let imgNameList = [];
                     imgList.forEach((element, index) => {
-                        imgNameList[index] = pagename + (index + 1) + element.slice(-4);
-                        if (ifImgDownload) { GM_download(element, imgNameList[index]); }
+                        imgNameList[index] = productItem.value.pagename + (index + 1) + element.slice(-4);
+                        if (productItem.value.ifImgDownload) { GM_download(element, imgNameList[index]); }
                     });
                     let imgNameStr = imgNameList.join('\n');
 
                     //等待长图加载完毕后输出结果
-                    resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${price}\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=\n|链接（天猫）=${link}\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${date}\n|适龄=\n|条码=\n|主题=${feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgNameStr}}}\n`;
+                    resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${productItem.value.price}\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=\n|链接（天猫）=${link}\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${productItem.value.date||''}\n|适龄=\n|条码=\n|主题=${feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgNameStr}}}\n`;
 
                 }
 

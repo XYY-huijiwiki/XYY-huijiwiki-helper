@@ -9,11 +9,11 @@
 // @match         https://www.youtube.com/playlist*
 // @match         https://item.taobao.com/item.htm*
 // @match         https://detail.tmall.com/item.htm*
-// @resource json file://E:\Project\XYY-huiji-wiki-helper\羊羊百科小助手.json
-// @resource html file://E:\Project\XYY-huiji-wiki-helper\羊羊百科小助手.txt
-// @resource css  file://E:\Project\XYY-huiji-wiki-helper\羊羊百科小助手.css
+// @resource json file://D:\文档\GitHub\XYY-huiji-wiki-helper\羊羊百科小助手.json
+// @resource html file://D:\文档\GitHub\XYY-huiji-wiki-helper\羊羊百科小助手.txt
+// @resource css  file://D:\文档\GitHub\XYY-huiji-wiki-helper\羊羊百科小助手.css
 // @require       https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
-// @require       file://E:\Project\XYY-huiji-wiki-helper\羊羊百科小助手.js
+// @require       file://D:\文档\GitHub\XYY-huiji-wiki-helper\羊羊百科小助手.js
 // @grant GM_download
 // @grant GM_getResourceText
 // @grant GM_addStyle
