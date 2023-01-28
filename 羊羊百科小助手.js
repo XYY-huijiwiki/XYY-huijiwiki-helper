@@ -99,7 +99,9 @@ jQuery(document).ready(function ($) {
 
                     //收集颜色分类的图片
                     $('#J_isku .J_TSaleProp a').each((index, ele) => {
-                        img = img.concat($(ele).attr('style').replace('background:url(', '').replace('_30x30.jpg) center no-repeat;', ''));
+                        if ($(ele).attr('style')) {
+                            img = img.concat($(ele).attr('style').replace('background:url(', '').replace('_30x30.jpg) center no-repeat;', ''));
+                        }
                     });
                     //加上https前缀并去除重复图片
                     img.forEach((ele, index) => {
