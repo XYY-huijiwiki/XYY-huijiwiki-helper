@@ -123,7 +123,11 @@ jQuery(document).ready(function ($) {
                     let longImgStr = ''; //长图的文件名字符串
 
                     $('#J_DivItemDesc img').each((index, ele) => {
-                        longImg = longImg.concat('https:' + $(ele).attr('src'));
+                        let a = $(ele).attr('src');
+                        a.slice(0, 1) === '//'
+                            ? a = 'https:' + a
+                            : a = a;
+                        longImg = longImg.concat(a);
                     });
                     console.log(longImg);
 
@@ -135,7 +139,7 @@ jQuery(document).ready(function ($) {
                     longImgStr = longImgList.join('|');
 
                     //等待长图加载完毕后输出结果
-                    resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${productItem.value.price}\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=${link}\n|链接（天猫）=\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${productItem.value.date||''}\n|适龄=\n|条码=\n|主题=${productItem.value.feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgStr}}}\n`;
+                    resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${productItem.value.price}\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=${link}\n|链接（天猫）=\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${productItem.value.date || ''}\n|适龄=\n|条码=\n|主题=${productItem.value.feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgStr}}}\n`;
 
                 }
 
@@ -199,7 +203,7 @@ jQuery(document).ready(function ($) {
                     let imgNameStr = imgNameList.join('\n');
 
                     //等待长图加载完毕后输出结果
-                    resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${productItem.value.price}\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=\n|链接（天猫）=${link}\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${productItem.value.date||''}\n|适龄=\n|条码=\n|主题=${feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgNameStr}}}\n`;
+                    resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${productItem.value.price}\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=\n|链接（天猫）=${link}\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${productItem.value.date || ''}\n|适龄=\n|条码=\n|主题=${feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgNameStr}}}\n`;
 
                 }
 
