@@ -5,11 +5,12 @@
             :auto-focus="false">
             <n-drawer-content title="羊羊百科小助手" closable>
 
+                <n-alert :show-icon="false">
+                    检测到当前网站为{{currentSite}}。检测不正确时请勿使用任何功能，否则可能导致死循环。
+                </n-alert>
+
                 <!-- 网站为优兔视频列表时显示的内容 -->
                 <div v-if="currentSite===`优兔`">
-                    <n-alert :show-icon="false">
-                        检测到当前网站为优兔视频列表。检测出错时请勿使用任何功能。
-                    </n-alert>
                     <n-h2>获取视频列表数据</n-h2>
                     <n-space>
                         <n-button @click="getYouTubeList(`link`)">获取链接</n-button>
@@ -22,9 +23,6 @@
 
                 <!-- 网站为淘宝商品详情时显示的内容 -->
                 <div v-if="currentSite===`淘宝`">
-                    <n-alert :show-icon="false">
-                        检测到当前网站为淘宝商品详情。检测出错时请勿使用任何功能。
-                    </n-alert>
                     <n-h2>获取商品数据</n-h2>
                     <n-p>使用下列功能时请务必先手动滑动至页面底部，确保描述图完全加载完毕。</n-p>
                     <n-form label-placement="left" :label-width="80">
@@ -55,9 +53,6 @@
 
                 <!-- 网站为天猫商品详情时显示的内容 -->
                 <div v-if="currentSite===`天猫`">
-                    <n-alert :show-icon="false">
-                        检测到当前网站为天猫商品详情。检测出错时请勿使用任何功能。
-                    </n-alert>
                     <n-h2>获取商品数据</n-h2>
                     <n-p>使用下列功能时请务必先手动滑动至页面底部，确保描述图完全加载完毕。</n-p>
                     <n-form label-placement="left" :label-width="80">
