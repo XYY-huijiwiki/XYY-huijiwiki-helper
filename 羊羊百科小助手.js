@@ -119,35 +119,21 @@ jQuery(document).ready(function ($) {
                     let longImg = []; //长图的链接列表
                     let longImgList = []; //长图的文件名列表
                     let longImgStr = ''; //长图的文件名字符串
-                    // 等待#J_DivItemDesc img准备就绪
-                    (function () {
-                        if ((!$('#J_DivItemDesc img').length) || $('#J_DivItemDesc img:last').attr('data-src')) {
-                            setTimeout(arguments.callee, 3000);
-                            console.log('正在等待#J_DivItemDesc img就绪');
-                        } else {
-                            console.log('#J_DivItemDesc img已就绪');
-                            waitDesc();
-                        }
-                    })();
-                    //加载长图
-                    function waitDesc() {
 
-                        $('#J_DivItemDesc img').each((index, ele) => {
-                            longImg = longImg.concat('https:' + $(ele).attr('src'));
-                        });
-                        console.log(longImg);
+                    $('#J_DivItemDesc img').each((index, ele) => {
+                        longImg = longImg.concat('https:' + $(ele).attr('src'));
+                    });
+                    console.log(longImg);
 
-                        //排序和下载长图
-                        longImg.forEach((ele, index) => {
-                            if (ifImgDownload) { GM_download(ele, pagename + ' 描述图' + (index + 1) + ele.slice(-4)); }
-                            longImgList = longImgList.concat(pagename + ' 描述图' + (index + 1) + ele.slice(-4));
-                        });
-                        longImgStr = longImgList.join('|');
+                    //排序和下载长图
+                    longImg.forEach((ele, index) => {
+                        if (ifImgDownload) { GM_download(ele, pagename + ' 描述图' + (index + 1) + ele.slice(-4)); }
+                        longImgList = longImgList.concat(pagename + ' 描述图' + (index + 1) + ele.slice(-4));
+                    });
+                    longImgStr = longImgList.join('|');
 
-                        //等待长图加载完毕后输出结果
-                        resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${price}元\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=${link}\n|链接（天猫）=\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${date}\n|适龄=\n|条码=\n|主题=${feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgStr}}}\n`;
-
-                    }
+                    //等待长图加载完毕后输出结果
+                    resCode.value = `{{周边信息\n|版权=\n|尺寸=\n|定价=${price}元\n|货号=\n|链接（京东）=\n|链接（乐乎市集）=\n|链接（奇货）=\n|链接（淘宝）=${link}\n|链接（天猫）=\n|链接（玩具反斗城）=\n|品牌=${brand}\n|日期=${date}\n|适龄=\n|条码=\n|主题=${feat}\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgStr}}}\n`;
 
                 }
 
