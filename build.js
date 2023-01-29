@@ -9,13 +9,13 @@ const fs = require('fs');
 minify({
     compressor: uglifyES,
     input: path.join('src', '羊羊百科小助手.js'),
-    output: path.join('dist', '羊羊百科小助手.min.js'),
+    output: path.join('dist', '羊羊百科小助手.js'),
 });
 
 minify({
     compressor: cleanCSS,
     input: path.join('src', '羊羊百科小助手.css'),
-    output: path.join('dist', '羊羊百科小助手.min.css'),
+    output: path.join('dist', '羊羊百科小助手.css'),
 });
 
 minify({
@@ -27,7 +27,7 @@ minify({
 minify({
     compressor: jsonminify,
     input: path.join('src', '羊羊百科小助手.json'),
-    output: path.join('dist', '羊羊百科小助手.min.json'),
+    output: path.join('dist', '羊羊百科小助手.json'),
 });
 
 let a = fs.readFileSync(path.join('src', '羊羊百科小助手.user.js'), {
