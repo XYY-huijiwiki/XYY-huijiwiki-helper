@@ -11,7 +11,7 @@
 // @match         https://detail.tmall.com/item.htm*
 // @match         https://www.mgtv.com/h/*
 // @resource json https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist\羊羊百科小助手.json
-// @resource html https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist\羊羊百科小助手.html
+// @resource html https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist\羊羊百科小助手.txt
 // @resource css  https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist\羊羊百科小助手.css
 // @require       https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 // @require       https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist\羊羊百科小助手.js
