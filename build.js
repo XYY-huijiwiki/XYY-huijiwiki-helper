@@ -6,6 +6,8 @@ const jsonminify = require('@node-minify/jsonminify');
 const path = require('path');
 const fs = require('fs');
 
+fs.mkdirSync(`dist`, { recursive: true });
+
 minify({
     compressor: uglifyES,
     input: path.join('src', '羊羊百科小助手.js'),
