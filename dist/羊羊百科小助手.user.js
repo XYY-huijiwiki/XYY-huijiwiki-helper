@@ -10,11 +10,11 @@
 // @match         https://item.taobao.com/item.htm*
 // @match         https://detail.tmall.com/item.htm*
 // @match         https://www.mgtv.com/h/*
-// @resource json https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist\羊羊百科小助手.json
-// @resource html https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist\羊羊百科小助手.txt
-// @resource css  https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist\羊羊百科小助手.css
+// @resource json https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist/羊羊百科小助手.json
+// @resource html https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist/羊羊百科小助手.txt
+// @resource css  https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist/羊羊百科小助手.css
 // @require       https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
-// @require       https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist\羊羊百科小助手.js
+// @require       https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist/羊羊百科小助手.js
 // @grant         GM_download
 // @grant         GM_getResourceText
 // @grant         GM_addStyle
