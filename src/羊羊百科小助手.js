@@ -14,8 +14,10 @@ jQuery(document).ready(function ($) {
         await $.getScript('https://cdn.jsdelivr.net/npm/naive-ui/dist/index.prod.js');
         // console.log('[羊羊百科小助手]正在加载spark-md5……');
         // await $.getScript('https://cdn.jsdelivr.net/npm/spark-md5/spark-md5.min.js');
-        // console.log('[羊羊百科小助手]正在加载axios……');
-        // await $.getScript('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js');
+        console.log('[羊羊百科小助手]正在加载axios……');
+        await $.getScript('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js');
+        console.log('[羊羊百科小助手]正在加载js-sleep……');
+        await $.getScript('https://cdn.jsdelivr.net/gh/colxi/js-sleep@master/js-sleep.js');
         console.log('[羊羊百科小助手]正在启动程序……');
         await initVue();
         console.log('[羊羊百科小助手]启动完成。');
@@ -28,26 +30,28 @@ jQuery(document).ready(function ($) {
         const App = {
             setup() {
 
+                //判断当前网站
+                let currentSite = "";
+                if (location.href.match(/www.youtube.com\/playlist*/)) { currentSite = "优兔"; }
+                if (location.href.match(/item.taobao.com\/item.htm*/)) { currentSite = "淘宝"; }
+                if (location.href.match(/detail.tmall.com\/item.htm*/)) { currentSite = "天猫"; }
+                if (location.href.match(/www.mgtv.com\/h\/*/)) { currentSite = "芒果TV"; }
+
                 // 导入功能组件和定义变量
-                const darkTheme = naive.darkTheme;
-                const zhCN = naive.zhCN;
+                let darkTheme = naive.darkTheme;
+                let zhCN = naive.zhCN;
                 osThemeRef = naive.useOsTheme();
-                const resCode = Vue.ref('');
-                const productItem = Vue.ref({
+                let resCode = Vue.ref('');
+                let productItem = Vue.ref({
                     pagename: '',
                     price: '',
                     date: null,
                     feat: '',
                     ifImgDownload: false
                 });
+                let loading = Vue.ref(false);
 
-                //判断当前网站
-                let currentSite = "";
-                if (location.href.match(/www.youtube.com\/playlist*/)) { currentSite = "优兔"; }
-                if (location.href.match(/item.taobao.com\/item.htm*/)) { currentSite = "淘宝"; }
-                if (location.href.match(/detail.tmall.com\/item.htm*/)) { currentSite = "天猫"; }
-
-                //功能1：获取优兔播放列表
+                // 功能1：获取优兔播放列表
                 function getYouTubeList(type) {
 
                     console.log('正在获取优兔播放列表……');
@@ -76,7 +80,7 @@ jQuery(document).ready(function ($) {
 
                 }
 
-                //功能2：获取淘宝商品信息
+                // 功能2：获取淘宝商品信息
                 async function getTaobaoItem() {
 
                     productItem.value.pagename = productItem.value.pagename || '页面名称';
@@ -143,7 +147,7 @@ jQuery(document).ready(function ($) {
 
                 }
 
-                //功能3：获取天猫商品信息
+                // 功能3：获取天猫商品信息
                 async function getTianmaoItem() {
 
                     productItem.value.pagename = productItem.value.pagename || '页面名称';
@@ -207,6 +211,46 @@ jQuery(document).ready(function ($) {
 
                 }
 
+                // 功能4：获取芒果TV剧集数据
+                async function getMangguoList(type) {
+
+                    loading.value = true;
+
+                    // 定义一些参数
+                    let id = __NUXT__['data'][0]['collection_id'];
+                    let page = 1;
+                    let list_array = [];
+
+                    // 如果已经请求过一次，就把内容存在window.xyy里，不用重复请求。
+                    if (typeof xyy === 'undefined') {
+                        do {
+                            var a = await axios.get(`https://pcweb2.api.mgtv.com/episode/list?collection_id=${id}&page=${page}`);
+                            page++;
+                            console.log(`page=${a[`data`][`data`][`current_page`]}`);
+                            list_array = list_array.concat(a[`data`][`data`][`list`]);
+                            await sleep(1000);
+                        }
+                        while (a[`data`][`data`][`total_page`] != a[`data`][`data`][`current_page`]);
+                        window.xyy = list_array;
+                    } else {
+                        list_array = xyy;
+                    }
+
+                    // 处理结果
+                    let res = {
+                        'link': '',
+                        'title': ''
+                    };
+                    list_array.forEach(element => {
+                        res['link'] = res['link'] + 'https://www.mgtv.com' + element['url'] + '\n';
+                        res['title'] = res['title'] + element['t2'] + '\n';
+                    });
+                    resCode.value = res[type];
+
+                    loading.value = false;
+
+                }
+
                 // 手动暴露Vue参数
                 return {
                     showDrawer: Vue.ref(false),
@@ -216,8 +260,10 @@ jQuery(document).ready(function ($) {
                     getYouTubeList,
                     getTaobaoItem,
                     getTianmaoItem,
+                    getMangguoList,
                     darkTheme,
                     zhCN,
+                    loading,
                     theme: Vue.computed(() => (osThemeRef.value === 'dark' ? darkTheme : null)),
                     osTheme: osThemeRef
                 };

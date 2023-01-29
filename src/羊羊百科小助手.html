@@ -3,10 +3,10 @@
         <n-button type="primary" circle size="large" class="float-button" @click="showDrawer=true">按钮</n-button>
         <n-drawer v-model:show="showDrawer" :default-width="512" resizable :placement="right" :z-index="100000021"
             :auto-focus="false">
-            <n-drawer-content title="羊羊百科小助手" closable>
+            <n-drawer-content title="羊羊百科小助手" closable :native-scrollbar="false" :scrollbar-props="{'x-scrollable':'true'}">
 
-                <n-alert :show-icon="false">
-                    检测到当前网站为{{currentSite}}。检测不正确时请勿使用任何功能，否则可能导致死循环。
+                <n-alert :show-icon="false" :title="`当前网站为：${currentSite}`">
+                    如果当前网站与上面的显示结果不同，请在GitHub或羊羊百科向我反馈。
                 </n-alert>
 
                 <!-- 网站为优兔视频列表时显示的内容 -->
@@ -52,6 +52,25 @@
                     </n-form>
                     <n-code :code="resCode" />
                 </div>
+
+                <!-- 网站为优兔视频列表时显示的内容 -->
+                <div v-if="currentSite===`芒果TV`">
+                    <n-h2>获取视频列表数据</n-h2>
+                    <n-space>
+                        <n-button :loading="loading" @click="getMangguoList(`link`)">获取链接</n-button>
+                        <n-button :loading="loading" @click="getMangguoList(`title`)">获取标题</n-button>
+                        <n-button :loading="loading" @click="resCode=``">清空</n-button>
+                    </n-space>
+                    <n-code :code="resCode" />
+                </div>
+
+                <template #footer>
+                    <n-space>
+                        <n-button tag="a" href="https://github.com/XYY-huiji-wiki/XYY-huiji-wiki-helper" target="_blank">Github</n-button>
+                        <n-button tag="a" href="https://club.huijiwiki.com/wiki/特殊:驾驶室#/user/47472" target="_blank">羊羊百科</n-button>
+                        <n-button disabled>设置</n-button>
+                    </n-space>
+                </template>
 
             </n-drawer-content>
         </n-drawer>

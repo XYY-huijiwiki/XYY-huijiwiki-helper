@@ -1,0 +1,27 @@
+{
+  "name": "xyy-huiji-wiki-helper",
+  "version": "1.0.1",
+  "description": "mechanically process some data for XYY huiji wiki.",
+  "main": "羊羊百科小助手.user.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XYY-huiji-wiki/XYY-huiji-wiki-helper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XYY-huiji-wiki/XYY-huiji-wiki-helper/issues"
+  },
+  "homepage": "https://github.com/XYY-huiji-wiki/XYY-huiji-wiki-helper#readme",
+  "dependencies": {
+    "@node-minify/clean-css": "^7.1.0",
+    "@node-minify/core": "^7.1.0",
+    "@node-minify/html-minifier": "^7.1.0",
+    "@node-minify/jsonminify": "^7.1.0",
+    "@node-minify/uglify-es": "^7.1.0"
+  }
+}
