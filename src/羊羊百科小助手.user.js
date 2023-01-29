@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          羊羊百科小助手（本地测试）
-// @updateURL     https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.user.js
-// @downloadURL   https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/羊羊百科小助手.user.js
+// @updateURL     https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist/羊羊百科小助手.user.js
+// @downloadURL   https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist/羊羊百科小助手.user.js
 // @version       0.1.2
 // @description   辅助收集羊羊百科需要的信息。
 // @author        宋礼
