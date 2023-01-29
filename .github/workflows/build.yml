@@ -23,6 +23,10 @@ jobs:
           # 选择要使用的 node 版本
           node-version: 18
 
+      # 安装所需依赖
+      - name: npm installation
+        run: npm i
+
       # 运行构建脚本
       - name: Build UserScript
         run: npm run build
