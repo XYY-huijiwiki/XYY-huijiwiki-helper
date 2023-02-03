@@ -1,5 +1,5 @@
 {
-  "name": "xyy-huiji-wiki-helper",
+  "name": "XYY-huijiwiki-helper",
   "version": "1.0.1",
   "description": "mechanically process some data for XYY huiji wiki.",
   "main": "羊羊百科小助手.user.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/XYY-huiji-wiki/XYY-huiji-wiki-helper.git"
+    "url": "git+https://github.com/XYY-huijiwiki/XYY-huijiwiki-helper.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/XYY-huiji-wiki/XYY-huiji-wiki-helper/issues"
+    "url": "https://github.com/XYY-huijiwiki/XYY-huijiwiki-helper/issues"
   },
-  "homepage": "https://github.com/XYY-huiji-wiki/XYY-huiji-wiki-helper#readme",
+  "homepage": "https://github.com/XYY-huijiwiki/XYY-huijiwiki-helper#readme",
   "dependencies": {
     "@node-minify/clean-css": "^7.1.0",
     "@node-minify/core": "^7.1.0",

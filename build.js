@@ -38,7 +38,7 @@ let a = fs.readFileSync(path.join('src', '羊羊百科小助手.user.js'), {
 a = a.replace('（本地测试）', '');
 a = a.replace('羊羊百科小助手.html', '羊羊百科小助手.txt');
 a = a.replace(
-    /file:\/\/D:\\文档\\GitHub\\XYY-huiji-wiki-helper\\src\\/g,
-    `https://cdn.jsdelivr.net/gh/XYY-huiji-wiki/XYY-huiji-wiki-helper@main/dist/`
+    /file:\/\/D:\\文档\\GitHub\\XYY-huijiwiki-helper\\src\\/g,
+    `https://cdn.jsdelivr.net/gh/XYY-huijiwiki/XYY-huijiwiki-helper@main/dist/`
 );
 fs.writeFileSync(path.join('dist', '羊羊百科小助手.user.js'), a);

@@ -275,7 +275,7 @@ jQuery(document).ready(function ($) {
         // 启动Vue
         const app = Vue.createApp(App);
         app.use(naive);
-        app.mount('#XYY-huiji-wiki-helper');
+        app.mount('#XYY-huijiwiki-helper');
     }
 
 });
