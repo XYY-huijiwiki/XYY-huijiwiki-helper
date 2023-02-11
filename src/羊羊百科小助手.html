@@ -22,7 +22,7 @@
                 </div>
 
                 <!-- 网站为淘宝或天猫商品详情时显示的内容 -->
-                <div v-if="currentSite===(`淘宝`||`天猫`)">
+                <div v-if="[`淘宝`,`天猫`].includes(currentSite)">
                     <n-h2>获取商品数据</n-h2>
                     <n-p>使用下列功能时请务必先手动滑动至页面底部，确保描述图完全加载完毕。</n-p>
                     <n-form label-placement="left" :label-width="80">
