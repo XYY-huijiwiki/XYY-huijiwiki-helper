@@ -45,8 +45,9 @@
                         </n-form-item>
                         <n-form-item>
                             <n-button attr-type="button"
-                                @click="currentSite===`淘宝` ? getTaobaoItem() : getTianmaoItem()">
-                                获取
+                                @click="currentSite===`淘宝` ? getTaobaoItem() : getTianmaoItem()"
+                                :loading="loading">
+                                获取123
                             </n-button>
                         </n-form-item>
                     </n-form>
