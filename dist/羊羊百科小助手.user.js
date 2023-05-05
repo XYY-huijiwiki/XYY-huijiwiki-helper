@@ -18,4 +18,5 @@
 // @grant         GM_download
 // @grant         GM_getResourceText
 // @grant         GM_addStyle
+// @grant         GM_setClipboard
 // ==/UserScript==

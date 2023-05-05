@@ -185,6 +185,12 @@ jQuery(document).ready(function ($) {
           }\n|适龄=\n|条码=\n|主题=${
             productItem.value.feat
           }\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgStr}}}\n`;
+
+          // 如果启用了自动复制，则自动复制结果
+          if (productItem.value.ifAutoCopy) {
+            navigator.clipboard.writeText(resCode.value);
+            alert("复制成功！");
+          }
         }
 
         // 功能3：获取天猫商品信息
@@ -223,9 +229,19 @@ jQuery(document).ready(function ($) {
           //加载描述图
           let longImgList = [];
           $(`[class^='descV8'] img`).each((index, ele) => {
-            longImgList = longImgList.concat($(ele).attr("src"));
-            console.log(longImgList);
+            let a = $(ele).attr("src");
+            // 去除两张无用的图片
+            if (
+              a !==
+                "//gw.alicdn.com/tfs/TB1d0h2qVYqK1RjSZLeXXbXppXa-1125-960.png?getAvatar=avatar" &&
+              a !==
+                "https://assets.alicdn.com/kissy/1.0.0/build/imglazyload/spaceball.gif"
+            ) {
+              longImgList = longImgList.concat(a);
+            }
           });
+          console.log(`longImgList`);
+          console.log(longImgList);
           //生成文件名
           let longImgNameList = [];
           longImgList.forEach((element, index) => {
@@ -270,8 +286,7 @@ jQuery(document).ready(function ($) {
           // Add https prefix and remove image compression suffix
           imgList = imgList.map(
             (element) =>
-              "https:" +
-              element.replace(/_(110x10000Q75|60x60q50)\.jpg_\.webp/, "")
+              "https:" + element.replace(/\.(jpg|png).*?_\.webp$/, ".$1")
           );
           // Remove duplicate images
           imgList = await removeDuplicateImages(imgList);
@@ -295,6 +310,12 @@ jQuery(document).ready(function ($) {
           }\n|适龄=\n|条码=\n|主题=${
             productItem.value.feat
           }\n}}\n\n<gallery>\n${imgNameStr}\n</gallery>\n\n{{长图|${longImgNameStr}}}\n`;
+
+          // 如果启用了自动复制，就复制结果
+          if (productItem.value.ifAutoCopy) {
+            navigator.clipboard.writeText(resCode.value);
+            alert("复制成功！");
+          }
 
           // 关闭加载动画
           loading.value = false;
